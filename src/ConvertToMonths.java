@@ -11,7 +11,7 @@ public class ConvertToMonths {
         double howManyTested = failureRateCalculator.getHowManyTested();
         double failuresDuringOperationPerMonth = failureRateCalculator.getFailuresDuringOperationPerHour() * 24 * 30;
         double MTBF = 1 / failuresDuringOperationPerMonth * 30;
-        System.out.println(TextColor.RESET + TextColor.RED + "Results:");
+        System.out.println(TextColor.RESET + TextColor.GREEN + "Results:");
         System.out.println("FR(N) = " + String.format("%.5f", failuresDuringOperationPerMonth) + " failures/month");
         System.out.println("FR(N) for: " + howManyTested + " units = " + String.format("%.5f", failuresDuringOperationPerMonth * howManyTested) + " failures/month");
         System.out.println("MTBF = " + String.format("%.5f", MTBF) + " days");

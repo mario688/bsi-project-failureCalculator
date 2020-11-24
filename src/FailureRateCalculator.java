@@ -20,23 +20,27 @@ public class FailureRateCalculator {
     public void CalculateFailure() {
 
         System.out.print(TextColor.BLUE_BACKGROUND + TextColor.BLACK_UNDERLINED + "---Failure Calculator---\n");
-        System.out.print(TextColor.RESET + "how many tests were performed: ");
-        howManyTested = myInput.nextInt();
-        System.out.print("Enter how many failed tests: ");
-        howManyFailedTests = myInput.nextInt();
-        System.out.print("Enter the time duration of test : ");
-        totalTime = myInput.nextInt() * howManyTested;
-        failuresRate = (howManyFailedTests / howManyTested) * 100;
-        System.out.print("Enter the downtime (sum of hours) ");
-        downTime = myInput.nextInt();
-        workingTime = totalTime - downTime;
-        failuresDuringOperationPerHour = howManyFailedTests / workingTime;
-        double MTBF = 1 / failuresRate;
-        System.out.println(TextColor.RED + "Results:");
-        System.out.print(TextColor.RESET + TextColor.RED + "FR(%) = " + failuresRate + "%\n");
-        System.out.print(TextColor.RED + "FR(N) = " + String.format("%.5f", failuresDuringOperationPerHour) + " failures/hour\n");
-        System.out.print(TextColor.RED + "MTBF = " + String.format("%.5f", MTBF) + " hours\n");
 
+        try {
+            System.out.print(TextColor.RESET + "how many tests were performed: ");
+            howManyTested = myInput.nextInt();
+            System.out.print("Enter how many failed tests: ");
+            howManyFailedTests = myInput.nextInt();
+            System.out.print("Enter the time duration of test : ");
+            totalTime = myInput.nextInt() * howManyTested;
+            failuresRate = (howManyFailedTests / howManyTested) * 100;
+            System.out.print("Enter the downtime (sum of hours) ");
+            downTime = myInput.nextInt();
+            workingTime = totalTime - downTime;
+            failuresDuringOperationPerHour = howManyFailedTests / workingTime;
+            double MTBF = 1 / failuresRate;
+            System.out.println(TextColor.GREEN + "Results:");
+            System.out.print("FR(%) = " + failuresRate + "%\n");
+            System.out.print("FR(N) = " + String.format("%.5f", failuresDuringOperationPerHour) + " failures/hour\n");
+            System.out.print("MTBF = " + String.format("%.5f", MTBF) + " hours\n");
+        } catch (Exception e) {
+            System.err.println("!!INCORRECTLY INSERTED DATA (not a number/zero) !!");
+        }
     }
 
     public Scanner getMyInput() {

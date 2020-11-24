@@ -7,6 +7,7 @@ public class CountNumberOfBreakdowns {
     Scanner myInput = new Scanner(System.in);
 
     public void CountBreakdowns() {
+        try {
         System.out.print(TextColor.BLUE_BACKGROUND + TextColor.BLACK_UNDERLINED + "---Number of breakdowns Calculator---\n");
         System.out.print(TextColor.RESET + "Enter how many breakdowns: ");
         int howManyBreakdowns = myInput.nextInt();
@@ -18,11 +19,14 @@ public class CountNumberOfBreakdowns {
             result = result + (i * (breakdowns[i] * 0.1));
 
         }
-        System.out.println(TextColor.RED + "Results:");
+        System.out.println(TextColor.GREEN + "Results:");
         //Expected number of breakdowns
         System.out.println(String.format("%.2f", result) + " breakdowns/day");
         //Expected breakdown cost
         System.out.println("$" + String.format("%.2f", result * 10) + "/day\n");
+        } catch (Exception e) {
+            System.err.println("!!INCORRECTLY INSERTED DATA (not a number/zero) !!");
+        }
 
     }
 
