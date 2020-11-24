@@ -1,4 +1,4 @@
-//Source:http://www.java2s.com/Code/Java/Development-Class/Javaprogramtodemonstratemenuselection.htm
+
 class Keyin {
 
     //*******************************
