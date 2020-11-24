@@ -1,17 +1,22 @@
 package com.company;
 
+import java.util.Locale;
+import java.util.Scanner;
+
 //Author:Mario Gliwa, Karol Skwierawski
 public class MainApp {
 
     public static void main(String[] args) {
-        FailureRateCalculator failureRateCalculator = new FailureRateCalculator();
+        Scanner scanner = new Scanner(System.in);
+        scanner.useLocale(Locale.US);
+       /* FailureRateCalculator failureRateCalculator = new FailureRateCalculator();
         ConvertToMonths convertToMonths = new ConvertToMonths();
         CountNumberOfBreakdowns countNumberOfBreakdowns = new CountNumberOfBreakdowns();
 
         failureRateCalculator.CalculateFailure();
         convertToMonths.Convert(failureRateCalculator);
         countNumberOfBreakdowns.CountBreakdowns();
-
+        */
 
         //MOJE KAROL
         Formulas objectForExercise41 = new Formulas(100000, 0.95, 0.6, 6, 2);
@@ -20,8 +25,8 @@ public class MainApp {
         Double exercise41Result = exercise41(objectForExercise41);
         Double exercise43Result = exercise43(objectForExercise43);
 
-        System.out.println(exercise41Result);
-        System.out.println(exercise43Result);
+        System.out.format(Locale.US, "%,.0f%n", exercise41Result);
+        System.out.format(Locale.US, "%,.0f%n", exercise43Result);
     }
 
     public static double exercise41(Formulas object) {
