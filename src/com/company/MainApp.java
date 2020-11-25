@@ -1,46 +1,59 @@
 package com.company;
 
-import java.util.Locale;
+import com.company.*;
+
+import javax.xml.crypto.Data;
 import java.util.Scanner;
 
 //Author:Mario Gliwa, Karol Skwierawski
 public class MainApp {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        scanner.useLocale(Locale.US);
-       /* FailureRateCalculator failureRateCalculator = new FailureRateCalculator();
+        FailureRateCalculator failureRateCalculator = new FailureRateCalculator();
         ConvertToMonths convertToMonths = new ConvertToMonths();
         CountNumberOfBreakdowns countNumberOfBreakdowns = new CountNumberOfBreakdowns();
+        TestLifeCalculator testLifeCalculator = new TestLifeCalculator();
+        TimeOfTestingCalculator timeOfTestingCalculator = new TimeOfTestingCalculator();
+        int swValue;
 
-        failureRateCalculator.CalculateFailure();
-        convertToMonths.Convert(failureRateCalculator);
-        countNumberOfBreakdowns.CountBreakdowns();
-        */
+        // Display menu graphics
+        System.out.println(TextColor.BLUE + "=====================================================");
+        System.out.println("|         BSI-Project-Calculator                    |");
+        System.out.println("=====================================================");
+        System.out.println("| Options:                                          |");
+        System.out.println("|        1. failure Rate Calculator                 |");
+        System.out.println("|        2. failure Rate Calculator with convert    |");
+        System.out.println("|        3. count number of breakdowns              |");
+        System.out.println("|        4. Test Life calculator                    |");
+        System.out.println("|        5. Time of Testing calculator              |");
+        System.out.println("|        6. EXIT                                    |");
+        System.out.println("=====================================================");
+        swValue = Keyin.inInt(TextColor.GREEN + " Select option: ");
 
-        //MOJE KAROL
-        Formulas objectForExercise41 = new Formulas(100000, 0.95, 0.6, 6, 2);
-        Formulas objectForExercise43 = new Formulas(1500,0.9,0.8,10,2);
+        // Switch construct
+        switch (swValue) {
+            case 1:
+                failureRateCalculator.CalculateFailure();
+                break;
+            case 2:
+                failureRateCalculator.CalculateFailure();
+                convertToMonths.Convert(failureRateCalculator);
+                break;
+            case 3:
+                countNumberOfBreakdowns.CountBreakdowns();
+                break;
+            case 4:
+                testLifeCalculator.testLifeCalulator();
+                break;
+            case 5:
+                timeOfTestingCalculator.timeOfTestingCalculator();
+                break;
+            default:
+                System.out.println("Invalid selection");
+                break; // This break is not really necessary
+        }
 
-        Double exercise41Result = exercise41(objectForExercise41);
-        Double exercise43Result = exercise43(objectForExercise43);
 
-        System.out.format(Locale.US, "%,.0f%n", exercise41Result);
-        System.out.format(Locale.US, "%,.0f%n", exercise43Result);
     }
 
-    public static double exercise41(Formulas object) {
-        double pom1 = (1 / object.getSamples() * (Math.log10(1 / (1 - object.getC()))));
-        double pom2 = Math.log10(1 / (1 - (1 - object.getR())));
-        double pom3 = Math.pow((pom1 / pom2), (1 / object.getWeibull()));
-        return object.getT() * pom3;
-    }
-
-    public static double exercise43(Formulas object) {
-        double pom1 = (1 / object.getSamples() * (Math.log10(1 / (1 - object.getC()))));
-        double pom2 = Math.log10(1 / (1 - (1 - object.getR())));
-        double pom3 = Math.pow((pom1 / pom2), (1 / object.getWeibull()));
-        return object.getT() * pom3*1.5;
-    }
 }
-
